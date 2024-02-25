@@ -1,0 +1,39 @@
+name: Generate Javadoc
+
+on:
+  push:
+    branches:
+      - main 
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Java
+      uses: actions/setup-java@v2
+      with:
+        java-version: '17' 
+        distribution: 'adopt'
+
+    - name: Build and Generate Javadoc
+      run: |
+    
+    - name: eles all
+      run:
+        ls target
+    - name: eles
+      run:
+        mkdir -p paka
+        mv target paka
+
+    - name: Commit and Push Javadoc
+      run: |
+        git config user.name github-actions
+        git config user.email github-actions@github.com
+        git add .
+        git commit -m "Generate Javadoc"
+        git push
